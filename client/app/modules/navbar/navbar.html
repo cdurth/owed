@@ -1,0 +1,50 @@
+<div class="navbar navbar-default navbar-static-top" ng-controller="NavbarCtrl" >
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" ng-click="isCollapsed = !isCollapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">FlounceJS</a>
+    </div>
+    <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+      <ul class="nav navbar-nav">
+        <li ng-repeat="item in menu" ui-sref-active="active">
+            <a ui-sref="{{item.state}}" >{{item.title}}</a>
+        </li>
+        <li ng-show="isLoggedIn()" ui-sref-active="active"><a ui-sref="dashboard">Dashboard</a></li>
+        <li ng-show="isAdmin()" ui-sref-active="active"><a ui-sref="admin">Admin</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li ng-hide="isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Sign up</a></li>
+        <li ng-hide="isLoggedIn()" ui-sref-active="active"><a ng-click="loginModal()" href="#">Login</a></li>
+        <li ng-show="isLoggedIn()"><p class="navbar-text">Hello {{username}}</p> </li>
+        <li ng-show="isLoggedIn()" ui-sref-active="active"><a ui-sref="user-settings"><span class="glyphicon glyphicon-cog"></span></a></li>
+        <li ng-show="isLoggedIn()"><a ng-click="logout()" href="#">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script type="text/ng-template" id="loginModal.html">
+    	  <div class="modal-dialog">
+				<div class="loginmodal-container">
+					<h1>Login to Your Account</h1><br>
+				  <form>
+					<input type="text" name="user" placeholder="Username" ng-model="data.username">
+					<input type="password" name="pass" placeholder="Password" ng-model="data.password">
+          <button class="btn btn-primary" type="button" ng-click="login(data)">OK</button>
+          <button class="btn btn-primary" type="button" ng-click="cancel()">Cancel</button>
+				  </form>
+					
+				  <div class="login-help">
+					<a href="#">Register</a> - <a href="#">Forgot Password</a>
+				  </div>
+				</div>
+			</div>
+</script>
+
+
