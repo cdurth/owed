@@ -26,6 +26,7 @@ angular.module('testApp')
     username = decoded.name;
     isAuthenticated = true;
     authToken = token;
+    console.log(token);
 
     if (decoded.admin === true) {
       role = USER_ROLES.admin;

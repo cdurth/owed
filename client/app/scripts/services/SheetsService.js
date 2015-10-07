@@ -5,8 +5,7 @@ angular.module('testApp')
   return {
     create: function() {
       var deferred = $q.defer();
-
-      $http.post(Options.baseUrl + '/sheets', {}).success(function(data) {
+      $http.post(Options.baseUrl + '/sheets/sheets', {}).success(function(data) {
         deferred.resolve(data);
       }).error(function(data, status) {
         deferred.reject(data);

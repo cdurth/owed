@@ -11,6 +11,7 @@ module.exports = function (app, config) {
 
   // middleware that protects all routes except the auth
   app.use(function (req, res, next) {
+    console.log(req.headers);
     
     if (req.url === '/api/setup') {
       // allow request to unprotected setup route
@@ -23,7 +24,7 @@ module.exports = function (app, config) {
       next();
     }else if (req.url !== '/api/authenticate') {
       // check for token
-      var token = req.body.token || req.query.token || req.headers['x-access-token'];
+      var token = req.body.token || req.query.token || req.headers['x-access-token'] || req.headers['x-auth-token'];
       console.log(token);
       // decode token
       if (token) {

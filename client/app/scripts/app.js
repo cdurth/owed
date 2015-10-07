@@ -16,9 +16,10 @@ angular
     'ui.router',
     'ngSanitize',
     'ngTouch',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'angular-jwt'
   ])
-  .constant('Options', {baseUrl: 'http://localhost:3009'})
+  .constant('Options', {baseUrl: 'https://localhost:3000/api'})
   .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
     $stateProvider
@@ -116,6 +117,13 @@ angular
 				templateUrl: 'views/sheets/sheets.expenses.create.html'
 			});
   })
+  
+// .config(function($httpProvider, jwtInterceptorProvider){
+//    jwtInterceptorProvider.tokenGetter = function() {
+//     return localStorage.getItem('JWT');
+//   }
+//   $httpProvider.interceptors.push('jwtInterceptor');
+// })
   
 .run(function ($rootScope, $state, AuthService, AUTH_EVENTS) {
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
