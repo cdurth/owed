@@ -3,6 +3,7 @@ var ExpensesModel = require('../../models/expenses');
 var Async = require('async');
 
 exports.create = function(req, res) {
+	console.log('friends create');
 	var friend = req.body;
 
 	if (friend == null || friend.sheet_id == null || friend.name == null 

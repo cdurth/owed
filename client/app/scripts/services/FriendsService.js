@@ -5,7 +5,7 @@ angular.module('testApp')
 	return {
 		create: function(friend) {
 			var deferred = $q.defer();
-
+			console.log(friend);
 			$http.post(Options.baseUrl + '/friends', friend).success(function(data) {
 				deferred.resolve(data);
 			}).error(function(data, status) {
