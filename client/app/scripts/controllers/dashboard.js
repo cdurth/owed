@@ -14,9 +14,13 @@ angular.module('testApp')
 		};
 		
 		var getMySheets = function() {
+			$("#mySheets").hide();
+			$("#spinner").show();
+			
 			SheetsService.getUserSheets().then(function(data){
-				console.log(data);
 				$scope.mySheets = data;
+				$("#spinner").hide();
+				$("#mySheets").show();
 			});
 		}
 		
