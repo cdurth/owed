@@ -6,7 +6,7 @@ var Async = require('async');
 exports.create = function(req, res) {
 	var sheetEntry = new SheetsModel();
 	sheetEntry.name = 'My Shared Sheet';
-
+	sheetEntry.created_by = req.decoded.name;
 	sheetEntry.save(function(err) {
 		if (err) {
 			console.log(err);
@@ -101,7 +101,8 @@ exports.update = function(req, res) {
 }
 
 exports.all = function(req,res) {
-	SheetsModel.find(function(err, sheets){
+	console.log(req.decoded.name);
+	SheetsModel.find({created_by: req.decoded.name},function(err, sheets){
 		return res.json(sheets);
 	})
 }

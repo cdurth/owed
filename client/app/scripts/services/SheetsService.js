@@ -36,6 +36,17 @@ angular.module('testApp')
       });
 
       return deferred.promise;
+    },
+    
+    getUserSheets: function() {
+      var deferred = $q.defer();
+      $http.get(Options.baseUrl + '/sheets', {}).success(function(data){
+        deferred.resolve(data);
+      }).error(function(data, status) {
+        deferred.reject(data);
+      });
+      
+      return deferred.promise;
     }
   }
 });

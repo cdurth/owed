@@ -1,19 +1,36 @@
 <div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">
-            Authenticated Dashboard
-        </h1>
-    </div>
+  <div class="cover text-center">
+    <h1 class="cover-heading">Shared expenses made simple</h1>
+    <p class="lead">Manage expenses between your friends and know exactly who owes who.</p>
+    <p class="lead">
+      <a class="btn btn-lg btn-success" ng-click="createSheet()" ng-show="!creationInProgress" ng-hide="creationInProgress">New Sheet!</a>
+      <a class="btn btn-lg btn-success" ng-show="creationInProgress" ng-hide="!creationInProgress">Please wait</a>
+    </p>
+  </div>
 </div>
-<p>This is the logged in dashboard</p>
-<p>Welcome {{username}}</p>
 <div class="row">
-    	<div class="cover text-center">
-		<h1 class="cover-heading">Shared expenses made simple</h1>
-		<p class="lead">Manage expenses between your friends and know exactly who owes who.</p>
-		<p class="lead">
-	  		<a class="btn btn-lg btn-success" ng-click="createSheet()" ng-show="!creationInProgress" ng-hide="creationInProgress">Start Now!</a>
-	  		<a class="btn btn-lg btn-success" ng-show="creationInProgress" ng-hide="!creationInProgress">Please wait</a>
-		</p>
-	</div>
+  <div class="col-lg-12">
+    <h1 class="page-header">My Sheets</h1>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Sheet Name:</th>
+          <th>Created By:</th>
+          <th>Created On:</th>
+          <th>Balance:</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <tr ng-repeat="sheet in mySheets">
+          <th scope="row">1</th>
+          <td><a ui-sref="sheets.overview({id: sheet._id})">{{sheet.name}}</a></td>
+          <td>{{sheet.created_by}}</td>
+          <td>{{sheet.created | dateFilter}}</td>
+          <td>$100</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
